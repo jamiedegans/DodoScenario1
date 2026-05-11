@@ -68,6 +68,12 @@ public class MyDodo extends Dodo
         }
     }
     
+    public void turn180(){
+        turnRight();
+        turnRight();
+        
+    }
+    
     /**
      * Returns the number of eggs Dodo has hatched so far.
      * 
