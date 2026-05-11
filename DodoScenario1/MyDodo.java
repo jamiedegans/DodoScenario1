@@ -74,6 +74,8 @@ public class MyDodo extends Dodo
         
     }
     
+
+    
     /**
      * Returns the number of eggs Dodo has hatched so far.
      * 
@@ -93,9 +95,13 @@ public class MyDodo extends Dodo
      */
     public void jump( int distance ) {
         int nrStepsTaken = 0;               // set counter to 0
-        while ( nrStepsTaken < distance ) { // check if more steps must be taken  
-            move();                         // take a step
-            nrStepsTaken++;                 // increment the counter
+        while ( nrStepsTaken < distance ) { 
+            // check if more steps must be taken  
+            // take a step
+        
+            move();                         
+            nrStepsTaken++;
+            systeem              // increment the counter
         }
     }
 
