@@ -90,7 +90,7 @@ public class MyDodo extends Dodo
      * 
      * <p> Initial:   
      * <p> Final:  
-     * 
+     * makes the dodo move the amount of steps wanted and print it out
      * @param   int distance: the number of steps made
      */
     public void jump( int distance ) {
@@ -101,7 +101,7 @@ public class MyDodo extends Dodo
         
             move();                         
             nrStepsTaken++;
-            systeem              // increment the counter
+            System.out.println(nrStepsTaken + distance);            // increment the counter
         }
     }
 
