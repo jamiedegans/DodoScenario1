@@ -25,13 +25,30 @@ public class MyDodo extends Dodo
      *
      */
     public void move() {
-        if ( canMove() ) {
+        if (canMove()) {
             step();
         } else {
             showError( "I'm stuck!" );
         }
     }
-
+    
+public void climbOverFence() {
+        if (fenceAhead()) {
+            turnLeft();
+            move();       
+            turnRight();
+            move();
+            move(); 
+            turnRight();
+            move(); 
+             turnLeft();
+        } else {
+        showError( "there are no fences" );
+    }
+}
+    
+    
+    
     /**
      * Test if Dodo can move forward, (there are no obstructions
      *    or end of world in the cell in front of her).
