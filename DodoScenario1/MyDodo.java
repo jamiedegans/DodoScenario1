@@ -122,6 +122,18 @@ public void climbOverFence() {
         }
     }
 
+   // dod cn now see if grainahead by walking aboce it and then walking in a straight line. 
+   // 
+    
+public boolean grainAhead() {
+    move();
+    boolean result = onGrain();
+    turn180();                  
+    move();
+    turn180();
+    return result;           
+}
+    
     
     
     
