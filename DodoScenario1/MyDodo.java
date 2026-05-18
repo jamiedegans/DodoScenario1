@@ -152,10 +152,7 @@ public void gotoEgg() {
         move();
     }
              
-}
-    
-    
-    
+}    
     
     /**
      * Walks to edge of the world printing the coordinates at each step
@@ -165,10 +162,10 @@ public void gotoEgg() {
      *              Coordinates of each cell printed in the console.
      */
 
-    public void walkToWorldEdgePrintingCoordinates( ){
+    public void walkToWorldEdge(){
         while( ! borderAhead() ){
             // print coordinates
-            System.out.println( getX() + "," + getY());
+            //System.out.println( getX() + "," + getY());
             move();
         }
     }
