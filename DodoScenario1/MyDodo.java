@@ -31,7 +31,11 @@ public class MyDodo extends Dodo
             showError( "I'm stuck!" );
         }
     }
-    
+    /**
+     * climbs over a fence  and ends facing right
+     * 
+     * <P> makes the dodo climb over fence
+     */
 public void climbOverFence() {
         if (fenceAhead()) {
             turnLeft();
@@ -85,6 +89,9 @@ public void climbOverFence() {
         }
     }
     
+    /**
+     * dodo turns 180 degrees
+     */
     public void turn180(){
         turnRight();
         turnRight();
@@ -121,10 +128,10 @@ public void climbOverFence() {
             System.out.println(nrStepsTaken + distance);            // increment the counter
         }
     }
-
-   // dod cn now see if grainahead by walking aboce it and then walking in a straight line. 
-   // 
-    
+/**
+ * the dodo checks if the grain ahead by walking above it 
+ * then reurns the boolean
+ */
 public boolean grainAhead() {
     move();
     boolean result = onGrain();
