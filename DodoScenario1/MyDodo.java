@@ -128,6 +128,8 @@ public void climbOverFence() {
             System.out.println(nrStepsTaken + distance);            // increment the counter
         }
     }
+    
+    
 /**
  * the dodo checks if the grain ahead by walking above it 
  * then reurns the boolean
@@ -139,6 +141,17 @@ public boolean grainAhead() {
     move();
     turn180();
     return result;           
+}
+    
+    /**
+ * the dodo walks to a egg
+ * then reurns the boolean
+ */
+public void gotoEgg() {
+    while(!onEgg() && !borderAhead()){
+        move();
+    }
+             
 }
     
     
