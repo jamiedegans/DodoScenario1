@@ -31,26 +31,25 @@ public class MyDodo extends Dodo
             showError( "I'm stuck!" );
         }
     }
-    /**
-     * climbs over a fence  and ends facing right
-     * 
-     * <P> makes the dodo climb over fence
-     */
-public void climbOverFence() {
-        if (fenceAhead()) {
-            turnLeft();
-            move();       
-            turnRight();
-            move();
-            move(); 
-            turnRight();
-            move(); 
-             turnLeft();
-        } else {
-        showError( "there are no fences" );
-    }
-}
-    
+            /**
+             * climbs over a fence  and ends facing right
+             * 
+             * <P> makes the dodo climb over fence
+             */
+        public void climbOverFence() {
+                if (fenceAhead()) {
+                    turnLeft();
+                    move();       
+                    turnRight();
+                    move();
+                    move(); 
+                    turnRight();
+                    move(); 
+                     turnLeft();
+                } else {
+                showError( "there are no fences" );
+            }
+        }
     
     
     /**
@@ -169,7 +168,17 @@ public void gotoEgg() {
             move();
         }
     }
+    
+    /**
+     * 
+     */
+    public void goBackToStartOfRowAndFaceBack( ) {
+        turn180();
+        walkToWorldEdge();
+        turn180();
 
+    }
+    
     /**
      * Test if Dodo can lay an egg.
      *          (there is not already an egg in the cell)
