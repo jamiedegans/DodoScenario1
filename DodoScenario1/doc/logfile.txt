@@ -33,7 +33,7 @@ Generating C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1
 C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:5: warning: invalid input: '&'
  * @author Sjaak Smetsers & Renske Smetsers-Weeda
                           ^
-C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:118: warning: @param argument "int" is not a parameter name.
+C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:127: warning: @param argument "int" is not a parameter name.
      * @param   int distance: the number of steps made
        ^
 Generating C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\doc\package-summary.html...

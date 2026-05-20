@@ -31,6 +31,8 @@ public class MyDodo extends Dodo
             showError( "I'm stuck!" );
         }
     }
+    
+    
             /**
              * climbs over a fence  and ends facing right
              * 
@@ -96,7 +98,18 @@ public class MyDodo extends Dodo
         turnRight();
         
     }
-    
+    /**
+     * dodo walks over egde and will climbs over fences
+     */
+    public void walkToWorldEdgeClimbingOverFences(){
+        while(!borderAhead()){
+            if(fenceAhead() == true){
+                climbOverFence();
+            } else{
+                move();
+            }
+        }
+    }
 
     
     /**
@@ -170,7 +183,7 @@ public void gotoEgg() {
     }
     
     /**
-     * 
+     * walks to the egde of the world look at th end left
      */
     public void goBackToStartOfRowAndFaceBack( ) {
         turn180();
