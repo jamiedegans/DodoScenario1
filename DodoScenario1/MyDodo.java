@@ -142,6 +142,25 @@ public class MyDodo extends Dodo
     }
     
     
+    /**
+     * dodo walks to end of the world while picking uop each grain and printing it out
+     */
+    public void pickUpGrainsAndPrintCoordinates(){
+           while(!borderAhead()){
+            if(onGrain()){
+             System.out.println( getX() + "  ,  " + getY());
+             pickUpGrain();
+             
+            }
+            move();
+        }
+        if(onGrain()){
+             System.out.println( getX() + "  ,  " + getY());
+             pickUpGrain();
+        } 
+    }
+    
+    
 /**
  * the dodo checks if the grain ahead by walking above it 
  * then reurns the boolean
