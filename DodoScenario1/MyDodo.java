@@ -33,7 +33,7 @@ public class MyDodo extends Dodo
     }
     
     
-            /**
+        /**
              * climbs over a fence  and ends facing right
              * 
              * <P> makes the dodo climb over fence
@@ -159,31 +159,37 @@ public class MyDodo extends Dodo
              pickUpGrain();
         } 
     }
+     /**
+      * dodo turns takes one step and move back turning in end to right
+      */
+    public void stepOneCellBackwards() {
+        turn180();
+        step();
+        turn180();
+    }
     
-    
-/**
- * the dodo checks if the grain ahead by walking above it 
- * then reurns the boolean
- */
-public boolean grainAhead() {
-    move();
-    boolean result = onGrain();
-    turn180();                  
-    move();
-    turn180();
-    return result;           
-}
     
     /**
- * the dodo walks to a egg
- * then reurns the boolean
- */
-public void gotoEgg() {
-    while(!onEgg() && !borderAhead()){
+     * the dodo checks if the grain ahead by walking above it 
+     * then reurns the boolean
+     */
+    public boolean grainAhead() {
         move();
+        boolean result = onGrain();
+        stepOneCellBackwards();
+        return result;           
     }
-             
-}    
+    
+     /**
+     * the dodo walks to a egg
+     * then reurns the boolean
+     */
+    public void gotoEgg() {
+        while(!onEgg() && !borderAhead()){
+            move();
+        }
+                 
+    }    
     
     /**
      * Walks to edge of the world printing the coordinates at each step
