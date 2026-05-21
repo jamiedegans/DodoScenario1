@@ -141,8 +141,7 @@ public class MyDodo extends Dodo
         }
     }
     
-    
-    /**
+        /**
      * dodo walks to end of the world while picking uop each grain and printing it out
      */
     public void pickUpGrainsAndPrintCoordinates(){
@@ -159,6 +158,7 @@ public class MyDodo extends Dodo
              pickUpGrain();
         } 
     }
+    
      /**
       * dodo turns takes one step and move back turning in end to right
       */
@@ -167,8 +167,7 @@ public class MyDodo extends Dodo
         step();
         turn180();
     }
-    
-    
+        
     /**
      * the dodo checks if the grain ahead by walking above it 
      * then reurns the boolean
@@ -187,6 +186,7 @@ public class MyDodo extends Dodo
     public void gotoEgg() {
         while(!onEgg() && !borderAhead()){
             move();
+            
         }
                  
     }    
@@ -216,6 +216,23 @@ public class MyDodo extends Dodo
         turn180();
 
     }
+    
+    /**
+     * walks to the egde and lays egg in empty nest
+     */
+    public void walkToWorldEdgeLayingEgg(){
+        while(!borderAhead()){
+            if(onNest() && canLayEgg()){
+            layEgg();
+            }
+            move();
+            
+        }
+        if(onNest() && canLayEgg()){
+            layEgg();
+            }
+    }
+    
     
     /**
      * Test if Dodo can lay an egg.
