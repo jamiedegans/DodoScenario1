@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyDodo extends Dodo
 {
     private int myNrOfEggsHatched;
-    
+
     public MyDodo() {
         super( EAST );
         myNrOfEggsHatched = 0;
@@ -31,29 +31,27 @@ public class MyDodo extends Dodo
             showError( "I'm stuck!" );
         }
     }
-    
-    
-        /**
-             * climbs over a fence  and ends facing right
-             * 
-             * <P> makes the dodo climb over fence
-             */
-        public void climbOverFence() {
-                if (fenceAhead()) {
-                    turnLeft();
-                    move();       
-                    turnRight();
-                    move();
-                    move(); 
-                    turnRight();
-                    move(); 
-                     turnLeft();
-                } else {
-                showError( "there are no fences" );
-            }
+
+    /**
+     * climbs over a fence  and ends facing right
+     * 
+     * <P> makes the dodo climb over fence
+     */
+    public void climbOverFence() {
+        if (fenceAhead()) {
+            turnLeft();
+            move();       
+            turnRight();
+            move();
+            move(); 
+            turnRight();
+            move(); 
+            turnLeft();
+        } else {
+            showError( "there are no fences" );
         }
-    
-    
+    }
+
     /**
      * Test if Dodo can move forward, (there are no obstructions
      *    or end of world in the cell in front of her).
@@ -89,15 +87,16 @@ public class MyDodo extends Dodo
             showError( "There was no egg in this cell" );
         }
     }
-    
+
     /**
      * dodo turns 180 degrees
      */
     public void turn180(){
         turnRight();
         turnRight();
-        
+
     }
+
     /**
      * dodo walks over egde and will climbs over fences and lays egg on empty nest
      */
@@ -113,8 +112,21 @@ public class MyDodo extends Dodo
             }
         }
     }
-
     
+    /**
+     * dodo will walk around the fences stopping onto a egg
+     */
+    public void walkAroundFencedArea(){
+        while(!onEgg()){
+            turnRight();
+            while(fenceAhead()){
+                turnLeft();  
+            }
+            move();
+
+        }
+    }
+
     /**
      * Returns the number of eggs Dodo has hatched so far.
      * 
@@ -123,7 +135,7 @@ public class MyDodo extends Dodo
     public int getNrOfEggsHatched() {
         return myNrOfEggsHatched;
     }
-    
+
     /**
      * Move given number of cells forward in the current direction.
      * 
@@ -137,40 +149,40 @@ public class MyDodo extends Dodo
         while ( nrStepsTaken < distance ) { 
             // check if more steps must be taken  
             // take a step
-        
+
             move();                         
             nrStepsTaken++;
             System.out.println(nrStepsTaken + distance);            // increment the counter
         }
     }
-    
-        /**
+
+    /**
      * dodo walks to end of the world while picking uop each grain and printing it out
      */
     public void pickUpGrainsAndPrintCoordinates(){
-           while(!borderAhead()){
+        while(!borderAhead()){
             if(onGrain()){
-             System.out.println( getX() + "  ,  " + getY());
-             pickUpGrain();
-             
+                System.out.println( getX() + "  ,  " + getY());
+                pickUpGrain();
+
             }
             move();
         }
         if(onGrain()){
-             System.out.println( getX() + "  ,  " + getY());
-             pickUpGrain();
+            System.out.println( getX() + "  ,  " + getY());
+            pickUpGrain();
         } 
     }
-    
-     /**
-      * dodo turns takes one step and move back turning in end to right
-      */
+
+    /**
+     * dodo turns takes one step and move back turning in end to right
+     */
     public void stepOneCellBackwards() {
         turn180();
         step();
         turn180();
     }
-        
+
     /**
      * the dodo checks if the grain ahead by walking above it 
      * then reurns the boolean
@@ -181,19 +193,19 @@ public class MyDodo extends Dodo
         stepOneCellBackwards();
         return result;           
     }
-    
-     /**
+
+    /**
      * the dodo walks to a egg
      * then reurns the boolean
      */
     public void gotoEgg() {
         while(!onEgg() && !borderAhead()){
             move();
-            
+
         }
-                 
+
     }    
-    
+
     /**
      * Walks to edge of the world printing the coordinates at each step
      * 
@@ -209,7 +221,7 @@ public class MyDodo extends Dodo
             move();
         }
     }
-    
+
     /**
      * walks to the egde of the world look at th end left
      */
@@ -219,24 +231,23 @@ public class MyDodo extends Dodo
         turn180();
 
     }
-    
+
     /**
      * walks to the egde and lays egg in empty nest
      */
     public void walkToWorldEdgeLayingEgg(){
         while(!borderAhead()){
             if(onNest() && canLayEgg()){
-            layEgg();
+                layEgg();
             }
             move();
-            
+
         }
         if(onNest() && canLayEgg()){
             layEgg();
-            }
+        }
     }
-    
-    
+
     /**
      * Test if Dodo can lay an egg.
      *          (there is not already an egg in the cell)
@@ -250,10 +261,10 @@ public class MyDodo extends Dodo
      */
 
     public boolean canLayEgg( ){
-      if( onEgg() == true ){
-        return false;
-       }else{
+        if( onEgg() == true ){
+            return false;
+        }else{
             return true;
-       }
+        }
     }
 }
