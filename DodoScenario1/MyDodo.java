@@ -99,12 +99,15 @@ public class MyDodo extends Dodo
         
     }
     /**
-     * dodo walks over egde and will climbs over fences
+     * dodo walks over egde and will climbs over fences and lays egg on empty nest
      */
     public void walkToWorldEdgeClimbingOverFences(){
         while(!borderAhead()){
             if(fenceAhead() == true){
                 climbOverFence();
+                if(onNest() && canLayEgg()){
+                    layEgg();
+                }
             } else{
                 move();
             }
