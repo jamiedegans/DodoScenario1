@@ -127,8 +127,7 @@ public class MyDodo extends Dodo
                 if(!eggAhead()){
                     turn180();
                 }
-            }
-            
+            }  
         }
         
     }
@@ -144,6 +143,19 @@ public class MyDodo extends Dodo
             }
             move();
 
+        }
+    }
+    
+       /**
+     * dodo will walk around the fences stopping onto a nest
+     */
+    public void walkAroundFencedAreaToNest(){
+        while(!onNest()){
+            turnRight();
+            while(fenceAhead()){
+                turnLeft();  
+            }
+            move();
         }
     }
 
