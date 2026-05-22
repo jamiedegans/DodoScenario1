@@ -15,6 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
+        eggTrailToNest();
     }
 
     /**
@@ -111,6 +112,25 @@ public class MyDodo extends Dodo
                 move();
             }
         }
+    }
+    
+    /**
+     * dodo walks to the nest if there path to the eggs laid out
+     */
+       public void eggTrailToNest(){
+            while(!onNest()){
+            if(eggAhead() || nestAhead() == true){
+            move();
+            }
+            else{
+                turnRight();
+                if(!eggAhead()){
+                    turn180();
+                }
+            }
+            
+        }
+        
     }
     
     /**
@@ -221,7 +241,7 @@ public class MyDodo extends Dodo
             move();
         }
     }
-
+    
     /**
      * walks to the egde of the world look at th end left
      */
