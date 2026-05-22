@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
-        eggTrailToNest();
+        walkAroundFencedAreaToNest();
     }
 
     /**
@@ -138,11 +138,12 @@ public class MyDodo extends Dodo
     public void walkAroundFencedArea(){
         while(!onEgg()){
             turnRight();
+            
             while(fenceAhead()){
-                turnLeft();  
+                turnLeft(); 
+                
             }
             move();
-
         }
     }
     
@@ -153,7 +154,8 @@ public class MyDodo extends Dodo
         while(!onNest()){
             turnRight();
             while(fenceAhead()){
-                turnLeft();  
+                turnLeft();
+                
             }
             move();
         }
