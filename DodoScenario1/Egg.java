@@ -12,8 +12,7 @@ public abstract class Egg extends Actor
     
     public Egg( int value ) {
         myValue = value;
-    }
-            
+    } 
     
     public int getValue() {
         return myValue;

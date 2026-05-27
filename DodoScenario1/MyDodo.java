@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 3.0 -- 20-01-2017
  */
 public class MyDodo extends Dodo
-{
+{   
     private int myNrOfEggsHatched;
 
     public MyDodo() {
@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
-        walkAroundFencedAreaToNest();
+        changeEggValue();
     }
 
     /**
@@ -138,13 +138,29 @@ public class MyDodo extends Dodo
     public void walkAroundFencedArea(){
         while(!onEgg()){
             turnRight();
-            
             while(fenceAhead()){
-                turnLeft(); 
-                
+                turnLeft();             
             }
             move();
         }
+    }
+    
+    /**
+     * dodo will change values of the eggs 
+     */
+    public void changeEggValue(){
+          
+              BlueEgg blueEgg = new BlueEgg(); //1
+              GoldenEgg goldenEgg = new GoldenEgg(); //5
+              
+              int temporaryValueEgg = blueEgg.getValue(); //1
+              
+              blueEgg.setValue(goldenEgg.getValue()); // 1
+              goldenEgg.setValue(temporaryValueEgg);
+              
+              
+              System.out.println(goldenEgg.getValue());
+              System.out.println(blueEgg.getValue());
     }
     
        /**
