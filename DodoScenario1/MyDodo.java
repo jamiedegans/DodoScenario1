@@ -80,13 +80,22 @@ public class MyDodo extends Dodo
      * <p> Initial: Dodo is somewhere in the world. There is an egg in Dodo's cell.
      * <p> Final: Dodo is in the same cell. The egg has been removed (hatched).     
      */    
-    public void hatchEgg () {
+    public void hatchEgg() {
         if ( onEgg() ) {
             pickUpEgg();
             myNrOfEggsHatched++;
         } else {
             showError( "There was no egg in this cell" );
         }
+    }
+    
+    /**
+     * dodo that rotates the Dodo to face East 
+     */
+    public void faceEast(){
+       while(getDirection() != 1){
+           turnLeft();
+       }
     }
 
     /**
