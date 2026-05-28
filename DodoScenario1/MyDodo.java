@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
-        changeEggValue();
+       
     }
 
     /**
@@ -90,6 +90,34 @@ public class MyDodo extends Dodo
     }
     
     /**
+     * dodo will go to X and Y location 
+     */
+    public void goToLocation(int x, int y){
+        int moveX = x - getX();
+        int moveY = y - getY();
+        if(moveX > 0){
+           setDirection(0);
+           turnRight();
+           jump(moveX);
+        }else{
+           moveX = moveX *-1;
+           setDirection(0);
+           turnLeft();
+           jump(moveX); 
+        }
+        
+        if(moveY < 0){
+            moveY = moveY *-1;
+           setDirection(0);
+           jump(moveY);
+        }else{
+           setDirection(0);
+           turn180();
+           jump(moveY); 
+        }
+    }
+    
+    /**
      * dodo that rotates the Dodo to face East 
      */
     public void faceEast(){
@@ -104,7 +132,6 @@ public class MyDodo extends Dodo
     public void turn180(){
         turnRight();
         turnRight();
-
     }
 
     /**
@@ -158,7 +185,6 @@ public class MyDodo extends Dodo
      * dodo will change values of the eggs 
      */
     public void changeEggValue(){
-          
               BlueEgg blueEgg = new BlueEgg(); //1
               GoldenEgg goldenEgg = new GoldenEgg(); //5
               
@@ -166,7 +192,6 @@ public class MyDodo extends Dodo
               
               blueEgg.setValue(goldenEgg.getValue()); // 1
               goldenEgg.setValue(temporaryValueEgg);
-              
               
               System.out.println(goldenEgg.getValue());
               System.out.println(blueEgg.getValue());
@@ -180,7 +205,6 @@ public class MyDodo extends Dodo
             turnRight();
             while(fenceAhead()){
                 turnLeft();
-                
             }
             move();
         }

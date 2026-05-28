@@ -38,6 +38,7 @@ comment24.target=boolean\ borderAhead()
 comment24.text=\r\n\ Test\ is\ we\ are\ facing\ the\ border.\r\n
 comment25.params=
 comment25.target=boolean\ facingNorth()
+comment25.text=\r\n\ fance\ dodo\ north\r\n
 comment26.params=
 comment26.target=void\ turnLeft()
 comment26.text=\r\n\ Turns\ towards\ the\ left.\r\n
