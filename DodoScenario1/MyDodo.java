@@ -137,13 +137,13 @@ public class MyDodo extends Dodo
     
     
     /**
-     * dodo will turn to the asked 
+     * dodo will turn to the asked deriction
      */
     public void faceDirection(int deriction){
        if (deriction >= 0 && deriction <= 3){
-            while(getDirection() != deriction){
-           turnLeft();
-       }  
+                while(getDirection() != deriction){
+               turnLeft();
+            }  
        }
     }
 
@@ -169,6 +169,26 @@ public class MyDodo extends Dodo
                 move();
             }
         }
+    }
+    
+    /**
+     * counts the egg in the row straight forward
+     */
+    public void countEggsInRow(){
+        int EggInRow = 0;
+           if(onEgg()){
+                EggInRow++;
+        }
+        while(!borderAhead()){
+         move();
+        if(onEgg()){
+                EggInRow++;
+        }
+        
+     
+    }
+    goBackToStartOfRowAndFaceBack();
+         System.out.println(EggInRow);        
     }
     
     /**
@@ -202,6 +222,8 @@ public class MyDodo extends Dodo
         }
     }
     
+    
+    
     /**
      * dodo will change values of the eggs 
      */
@@ -230,6 +252,7 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
 
     /**
      * Returns the number of eggs Dodo has hatched so far.
@@ -268,7 +291,6 @@ public class MyDodo extends Dodo
             if(onGrain()){
                 System.out.println( getX() + "  ,  " + getY());
                 pickUpGrain();
-
             }
             move();
         }

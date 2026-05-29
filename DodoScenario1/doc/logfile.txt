@@ -23,19 +23,7 @@ windows-1252
 C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java
 <---- end of javadoc command ---->
 Loading source file C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java...
-Constructing Javadoc information...
-warning: unknown enum constant Tag.Any
-  reason: class file for threadchecker.Tag not found
-warning: unknown enum constant Tag.Any
-Standard Doclet version 21.0.4+7-LTS
-Building tree for all the packages and classes...
-Generating C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\doc\MyDodo.html...
-C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:5: warning: invalid input: '&'
- * @author Sjaak Smetsers & Renske Smetsers-Weeda
-                          ^
-C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:157: warning: @param argument "int" is not a parameter name.
-     * @param   int distance: the number of steps made
-       ^
-Generating C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\doc\package-summary.html...
-Generating C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\doc\index.html...
-4 warnings
+C:\Users\Jamai\OneDrive - ROC Nijmegen\school 2025\OOP2\DodoScenario1\DodoScenario1\MyDodo.java:179: error: not a statement
+                EggInRow;
+                ^
+1 error
