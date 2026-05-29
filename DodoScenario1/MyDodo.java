@@ -117,14 +117,21 @@ public class MyDodo extends Dodo
         }
     }
     
-    public void validCoordinates(int x, int y){
+    /**
+     * dodo will
+     */
+    public boolean validCoordinates(int x, int y){
         int moveX = x - getX();
         int moveY = y - getY();
-       // if( moveX && moveY >= getWidth() && getWorld()){
-            showError("Invalid coordinates");
-      //  }
-        
-
+    
+        World currentWorld = getWorld();
+        boolean isYValid = moveY >= 0 && moveY < currentWorld.getHeight();
+        boolean isXValid = moveX >= 0 && moveX < currentWorld.getWidth();
+        if( isXValid && isYValid){
+            return true;
+        }  
+        showError("Invalid coordinates");
+        return false;
         
     }
     
