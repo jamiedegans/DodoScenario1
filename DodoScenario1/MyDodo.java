@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
-       
+   
     }
 
     /**
@@ -117,12 +117,26 @@ public class MyDodo extends Dodo
         }
     }
     
+    public void validCoordinates(int x, int y){
+        int moveX = x - getX();
+        int moveY = y - getY();
+       // if( moveX && moveY >= getWidth() && getWorld()){
+            showError("Invalid coordinates");
+      //  }
+        
+
+        
+    }
+    
+    
     /**
-     * dodo that rotates the Dodo to face East 
+     * dodo will turn to the asked 
      */
-    public void faceEast(){
-       while(getDirection() != 1){
+    public void faceDirection(int deriction){
+       if (deriction >= 0 && deriction <= 3){
+            while(getDirection() != deriction){
            turnLeft();
+       }  
        }
     }
 
