@@ -118,7 +118,7 @@ public class MyDodo extends Dodo
     }
     
     /**
-     * dodo will
+     * dodo will check is he can move
      */
     public boolean validCoordinates(int x, int y){
         int moveX = x - getX();
