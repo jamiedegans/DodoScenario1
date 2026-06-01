@@ -170,6 +170,18 @@ public class MyDodo extends Dodo
         }
     }
 
+    
+    public void countEggsInWorld(){
+        goToLocation()
+        int locationXY = 1;
+        while(validCoordinates(locationXY, locationXY)){
+            goToLocation(locationXY, locationXY);
+            countEggsInRow();
+            locationXY++;
+            
+        }
+    }
+    
     /**
      * counts the egg in the row straight forward
      */
@@ -231,7 +243,7 @@ public class MyDodo extends Dodo
         }
     }
 
-    
+
     /**
      * dodo will change values of the eggs 
      */
@@ -281,8 +293,6 @@ public class MyDodo extends Dodo
     public void jump( int distance ) {
         int nrStepsTaken = 0;               // set counter to 0
         while ( nrStepsTaken < distance ) { 
-            // check if more steps must be taken  
-            // take a step
 
             move();                         
             nrStepsTaken++;
