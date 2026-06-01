@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {
-   
+
     }
 
     /**
@@ -88,7 +88,7 @@ public class MyDodo extends Dodo
             showError( "There was no egg in this cell" );
         }
     }
-    
+
     /**
      * dodo will go to X and Y location 
      */
@@ -96,34 +96,34 @@ public class MyDodo extends Dodo
         int moveX = x - getX();
         int moveY = y - getY();
         if(moveX > 0){
-           setDirection(0);
-           turnRight();
-           jump(moveX);
+            setDirection(0);
+            turnRight();
+            jump(moveX);
         }else{
-           moveX = moveX *-1;
-           setDirection(0);
-           turnLeft();
-           jump(moveX); 
+            moveX = moveX *-1;
+            setDirection(0);
+            turnLeft();
+            jump(moveX); 
         }
-        
+
         if(moveY < 0){
             moveY = moveY *-1;
-           setDirection(0);
-           jump(moveY);
+            setDirection(0);
+            jump(moveY);
         }else{
-           setDirection(0);
-           turn180();
-           jump(moveY); 
+            setDirection(0);
+            turn180();
+            jump(moveY); 
         }
     }
-    
+
     /**
      * dodo will check is he can move
      */
     public boolean validCoordinates(int x, int y){
         int moveX = x - getX();
         int moveY = y - getY();
-    
+
         World currentWorld = getWorld();
         boolean isYValid = moveY >= 0 && moveY < currentWorld.getHeight();
         boolean isXValid = moveX >= 0 && moveX < currentWorld.getWidth();
@@ -132,19 +132,18 @@ public class MyDodo extends Dodo
         }  
         showError("Invalid coordinates");
         return false;
-        
+
     }
-    
-    
+
     /**
      * dodo will turn to the asked deriction
      */
     public void faceDirection(int deriction){
-       if (deriction >= 0 && deriction <= 3){
-                while(getDirection() != deriction){
-               turnLeft();
+        if (deriction >= 0 && deriction <= 3){
+            while(getDirection() != deriction){
+                turnLeft();
             }  
-       }
+        }
     }
 
     /**
@@ -170,34 +169,32 @@ public class MyDodo extends Dodo
             }
         }
     }
-    
+
     /**
      * counts the egg in the row straight forward
      */
     public void countEggsInRow(){
         int EggInRow = 0;
-           if(onEgg()){
-                EggInRow++;
+        if(onEgg()){
+            EggInRow++;
         }
         while(!borderAhead()){
-         move();
-        if(onEgg()){
+            move();
+            if(onEgg()){
                 EggInRow++;
+            }
         }
-        
-     
+        goBackToStartOfRowAndFaceBack();
+        System.out.println(EggInRow);        
     }
-    goBackToStartOfRowAndFaceBack();
-         System.out.println(EggInRow);        
-    }
-    
+
     /**
      * dodo walks to the nest if there path to the eggs laid out
      */
-       public void eggTrailToNest(){
-            while(!onNest()){
+    public void eggTrailToNest(){
+        while(!onNest()){
             if(eggAhead() || nestAhead() == true){
-            move();
+                move();
             }
             else{
                 turnRight();
@@ -206,9 +203,9 @@ public class MyDodo extends Dodo
                 }
             }  
         }
-        
+
     }
-    
+
     /**
      * dodo will walk around the fences stopping onto a egg
      */
@@ -221,26 +218,37 @@ public class MyDodo extends Dodo
             move();
         }
     }
-    
-    
+
+    /**
+     * dodo will walk to edgde world laying the asked amount of eggs
+     */
+    public void layTrailOfEggs(int number){
+        int numberEggsLaid = 0;
+        while(number > numberEggsLaid){
+            move();
+            layEgg();
+            numberEggsLaid++;
+        }
+    }
+
     
     /**
      * dodo will change values of the eggs 
      */
     public void changeEggValue(){
-              BlueEgg blueEgg = new BlueEgg(); //1
-              GoldenEgg goldenEgg = new GoldenEgg(); //5
-              
-              int temporaryValueEgg = blueEgg.getValue(); //1
-              
-              blueEgg.setValue(goldenEgg.getValue()); // 1
-              goldenEgg.setValue(temporaryValueEgg);
-              
-              System.out.println(goldenEgg.getValue());
-              System.out.println(blueEgg.getValue());
+        BlueEgg blueEgg = new BlueEgg(); //1
+        GoldenEgg goldenEgg = new GoldenEgg(); //5
+
+        int temporaryValueEgg = blueEgg.getValue(); //1
+
+        blueEgg.setValue(goldenEgg.getValue()); // 1
+        goldenEgg.setValue(temporaryValueEgg);
+
+        System.out.println(goldenEgg.getValue());
+        System.out.println(blueEgg.getValue());
     }
-    
-       /**
+
+    /**
      * dodo will walk around the fences stopping onto a nest
      */
     public void walkAroundFencedAreaToNest(){
@@ -252,7 +260,6 @@ public class MyDodo extends Dodo
             move();
         }
     }
-    
 
     /**
      * Returns the number of eggs Dodo has hatched so far.
@@ -347,7 +354,7 @@ public class MyDodo extends Dodo
             move();
         }
     }
-    
+
     /**
      * walks to the egde of the world look at th end left
      */
