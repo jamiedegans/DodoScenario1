@@ -169,35 +169,41 @@ public class MyDodo extends Dodo
             }
         }
     }
-
     
-    public void countEggsInWorld(){
-        goToLocation()
+    
+    /**
+     * dodo will walk around the world counting eggs
+     */
+    public int countEggsInWorld(){
+        goToLocation(0, 0);
+        faceDirection(1);
+        int eggs = 0;
         int locationXY = 1;
-        while(validCoordinates(locationXY, locationXY)){
-            goToLocation(locationXY, locationXY);
-            countEggsInRow();
+        while(validCoordinates(0, locationXY)){
+            goToLocation(0, locationXY);
+            faceDirection(1);
+            eggs = countEggsInRow() + eggs;
             locationXY++;
-            
         }
+        return eggs;
     }
     
     /**
      * counts the egg in the row straight forward
      */
-    public void countEggsInRow(){
-        int EggInRow = 0;
+    public int countEggsInRow(){
+        int eggInRow = 0;
         if(onEgg()){
-            EggInRow++;
+            eggInRow++;
         }
         while(!borderAhead()){
             move();
             if(onEgg()){
-                EggInRow++;
+                eggInRow++;
             }
         }
         goBackToStartOfRowAndFaceBack();
-        System.out.println(EggInRow);        
+        return eggInRow; 
     }
 
     /**
@@ -215,7 +221,6 @@ public class MyDodo extends Dodo
                 }
             }  
         }
-
     }
 
     /**
@@ -242,7 +247,6 @@ public class MyDodo extends Dodo
             numberEggsLaid++;
         }
     }
-
 
     /**
      * dodo will change values of the eggs 
@@ -344,7 +348,6 @@ public class MyDodo extends Dodo
     public void gotoEgg() {
         while(!onEgg() && !borderAhead()){
             move();
-
         }
 
     }    
@@ -359,8 +362,6 @@ public class MyDodo extends Dodo
 
     public void walkToWorldEdge(){
         while( ! borderAhead() ){
-            // print coordinates
-            //System.out.println( getX() + "," + getY());
             move();
         }
     }
@@ -372,7 +373,6 @@ public class MyDodo extends Dodo
         turn180();
         walkToWorldEdge();
         turn180();
-
     }
 
     /**
