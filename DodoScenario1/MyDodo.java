@@ -183,7 +183,21 @@ public class MyDodo extends Dodo
         }
     }
 
-   
+        
+    /**
+     * dodo will lay the double amount of eggs
+     */
+    public void layDoubleAmountEggs(){
+      
+        int rowsLaid = 0;
+        
+        while(!borderAhead()){
+            goToLocation(0, rowsLaid); 
+            faceDirection(1);
+            layTrailOfEggs((int)Math.pow(2 ,rowsLaid));
+            rowsLaid++;
+        }
+    }
     
     
     /**
