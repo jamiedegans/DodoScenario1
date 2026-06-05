@@ -147,6 +147,22 @@ public class MyDodo extends Dodo
     }
 
     /**
+     * dodo walk around world counting the eggs and calculate the avarage
+     */
+    public double averageEggsPerRow() {
+        int totalEggs = 0;
+        int totalRows = getWorld().getHeight();
+
+        for (int row = 0; row < totalRows; row++) {
+            goToLocation(0, row);
+            faceDirection(1);
+            totalEggs += countEggsInRow();
+        }
+
+        return (double) totalEggs / totalRows;
+    }
+
+    /**
      * dodo turns 180 degrees
      */
     public void turn180(){
