@@ -169,12 +169,12 @@ public class MyDodo extends Dodo
             }
         }
     }
-    
+
     /**
      * dodo will lay the eggs  filling the map up in stairway like way
      */
     public void layThemEggs(){
-     
+
         int rowsLaid = 0;
         for(;rowsLaid < getWorld().getHeight(); rowsLaid++ ){
             goToLocation(0, rowsLaid); 
@@ -183,14 +183,11 @@ public class MyDodo extends Dodo
         }
     }
 
-        
     /**
      * dodo will lay the double amount of eggs
      */
     public void layDoubleAmountEggs(){
-      
         int rowsLaid = 0;
-        
         while(!borderAhead()){
             goToLocation(0, rowsLaid); 
             faceDirection(1);
@@ -198,8 +195,26 @@ public class MyDodo extends Dodo
             rowsLaid++;
         }
     }
-    
-    
+
+    /**
+     * Lays a pyramid of eggs starting from current postion
+     */
+
+    public void layEggPyramid() {
+        int centerX = getX();
+        int startY = getY();
+        int eggsInRow = 1;;
+        int rowStartX;
+        int row = 0;
+        for (; row + startY < getWorld().getHeight(); row++) {
+            rowStartX = centerX - row;
+            goToLocation(rowStartX, startY + row);
+            faceDirection(EAST);
+            layTrailOfEggs(eggsInRow);
+            eggsInRow += 2;
+        }
+    }
+
     /**
      * dodo will walk around the world counting eggs
      */
@@ -268,14 +283,13 @@ public class MyDodo extends Dodo
     /**
      * dodo will walk to edgde world laying the asked amount of eggs
      */
-    public void layTrailOfEggs(int number){
-        int numberEggsLaid = 0;
-        while(number > numberEggsLaid && ! borderAhead()){
+    public void layTrailOfEggs(int number) {
+        int eggsLaid = 0;
+        for (; eggsLaid < number; eggsLaid++) {
             layEgg();
-            numberEggsLaid++;
-            move();
+            if (eggsLaid < number - 1) 
+                move();
         }
-        layEgg();
     }
 
     /**
