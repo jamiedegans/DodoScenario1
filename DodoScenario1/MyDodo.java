@@ -158,7 +158,6 @@ public class MyDodo extends Dodo
             faceDirection(1);
             totalEggs += countEggsInRow();
         }
-
         return (double) totalEggs / totalRows;
     }
 
@@ -190,7 +189,6 @@ public class MyDodo extends Dodo
      * dodo will lay the eggs  filling the map up in stairway like way
      */
     public void layThemEggs(){
-
         int rowsLaid = 0;
         for(;rowsLaid < getWorld().getHeight(); rowsLaid++ ){
             goToLocation(0, rowsLaid); 
@@ -264,6 +262,38 @@ public class MyDodo extends Dodo
         }
         goBackToStartOfRowAndFaceBack();
         return eggInRow; 
+    }
+
+    public void countEggsAreEven(){
+        goToLocation(0, 0);
+        faceDirection(1);
+        int eggs = 0;
+        int startY = 0;
+        int startX = 0;
+        int errorLineY = 0;
+        int errorLineX = 0;
+        //Y
+        while(startY < getWorld().getHeight()){
+            goToLocation(0, startY);
+            faceDirection(1);
+            eggs = countEggsInRow() + eggs;
+            if(eggs % 2 == 1){
+                errorLineY = getY(); 
+            }
+            startY++;
+        }
+        //X
+        while(!borderAhead()){
+            goToLocation(startX, startY );
+           
+            eggs = countEggsInRow() + eggs;
+            if(eggs % 2 == 1){
+                errorLineX = getX(); 
+            }
+            startX++;
+        }
+        
+        goToLocation(errorLineY, errorLineX);
     }
 
     /**
