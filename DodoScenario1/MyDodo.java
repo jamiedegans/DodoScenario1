@@ -251,6 +251,7 @@ public class MyDodo extends Dodo
      */
     public int countEggsInRow(){
         int eggInRow = 0;
+        goBackToStartOfRowAndFaceBack();
         if(onEgg()){
             eggInRow++;
         }
@@ -260,40 +261,51 @@ public class MyDodo extends Dodo
                 eggInRow++;
             }
         }
-        goBackToStartOfRowAndFaceBack();
         return eggInRow; 
     }
 
-    public void countEggsAreEven(){
+    /**
+     * dodo wil count each row and then lay an egg in a uneven row
+     */
+    public void makeEggsEven(){
         goToLocation(0, 0);
         faceDirection(1);
-        int eggs = 0;
+        
         int startY = 0;
         int startX = 0;
-        int errorLineY = 0;
-        int errorLineX = 0;
-        //Y
-        while(startY < getWorld().getHeight()){
-            goToLocation(0, startY);
-            faceDirection(1);
-            eggs = countEggsInRow() + eggs;
-            if(eggs % 2 == 1){
-                errorLineY = getY(); 
-            }
-            startY++;
-        }
+        int errorLineY = -1;
+        int errorLineX = -1;
         //X
-        while(!borderAhead()){
-            goToLocation(startX, startY );
-           
-            eggs = countEggsInRow() + eggs;
+        while(startX < getWorld().getHeight()){
+            goToLocation(0, startX);
+            faceDirection(1);
+            int eggs = countEggsInRow();
+            
             if(eggs % 2 == 1){
-                errorLineX = getX(); 
+                errorLineX = getY(); 
+                System.out.println("Y: "+errorLineX);
             }
             startX++;
         }
-        
-        goToLocation(errorLineY, errorLineX);
+
+        //Y
+        while(startY < getWorld().getWidth()){
+            goToLocation(startY, 0);
+            faceDirection(0);
+            int eggs = countEggsInRow();
+            if(eggs % 2 == 1){
+                errorLineY = getX();
+                System.out.println("X:"+errorLineY);
+            }
+            startY++;
+
+            
+        }
+
+        if(errorLineX != -1 && errorLineY != -1){
+            goToLocation(errorLineY, errorLineX);
+            layEgg();
+        }
     }
 
     /**
@@ -390,7 +402,7 @@ public class MyDodo extends Dodo
 
             move();                         
             nrStepsTaken++;
-            System.out.println(nrStepsTaken + distance);            // increment the counter
+            //System.out.println(nrStepsTaken + distance);            // increment the counter
         }
     }
 
@@ -439,7 +451,6 @@ public class MyDodo extends Dodo
         while(!onEgg() && !borderAhead()){
             move();
         }
-
     }    
 
     /**
