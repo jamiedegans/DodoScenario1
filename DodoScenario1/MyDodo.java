@@ -275,7 +275,7 @@ public class MyDodo extends Dodo
         int startX = 0;
         int errorLineY = -1;
         int errorLineX = -1;
-        //X
+        
         while(startX < getWorld().getHeight()){
             goToLocation(0, startX);
             faceDirection(1);
@@ -288,7 +288,6 @@ public class MyDodo extends Dodo
             startX++;
         }
 
-        //Y
         while(startY < getWorld().getWidth()){
             goToLocation(startY, 0);
             faceDirection(0);
@@ -297,9 +296,7 @@ public class MyDodo extends Dodo
                 errorLineY = getX();
                 System.out.println("X:"+errorLineY);
             }
-            startY++;
-
-            
+            startY++;  
         }
 
         if(errorLineX != -1 && errorLineY != -1){
