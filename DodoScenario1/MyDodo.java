@@ -270,17 +270,17 @@ public class MyDodo extends Dodo
     public void makeEggsEven(){
         goToLocation(0, 0);
         faceDirection(1);
-        
+
         int startY = 0;
         int startX = 0;
         int errorLineY = -1;
         int errorLineX = -1;
-        
+
         while(startX < getWorld().getHeight()){
             goToLocation(0, startX);
             faceDirection(1);
             int eggs = countEggsInRow();
-            
+
             if(eggs % 2 == 1){
                 errorLineX = getY(); 
                 System.out.println("Y: "+errorLineX);
@@ -303,6 +303,56 @@ public class MyDodo extends Dodo
             goToLocation(errorLineY, errorLineX);
             layEgg();
         }
+    }
+
+    /**
+     * dodo will make the world even without using any derictional functions
+     */
+    public void makeEggsEvenVersionAfterHittingHead(){
+        walkToWorldEdge();
+        turnLeft();
+        walkToWorldEdge();
+        turn180();
+        
+        int moved = 0;
+
+        while(!borderAhead()){
+            int eggs = countEggsInRow();
+            goBackToStartOfRowAndFaceBack();        
+
+            if(eggs % 2 == 1){
+                walkToWorldEdge();
+                turnLeft();
+                walkToWorldEdge();
+                turn180();
+                while(!borderAhead()){
+                    eggs = countEggsInRow();
+                    goBackToStartOfRowAndFaceBack();
+
+                    if(eggs % 2 == 1){
+                        jump(moved);
+                        layEgg();
+                        break;
+                    }
+                    turnRight();
+                    if(borderAhead()){
+                        break;
+                    }
+                    move();
+                    turnLeft();
+                }
+                break;
+            }
+
+            turnRight();
+            if(borderAhead()){
+                break;
+            }
+            move();
+            moved++;
+            turnLeft();
+        }
+
     }
 
     /**
@@ -459,7 +509,7 @@ public class MyDodo extends Dodo
      */
 
     public void walkToWorldEdge(){
-        while( ! borderAhead() ){
+        while(!borderAhead() ){
             move();
         }
     }
