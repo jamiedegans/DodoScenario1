@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  *
@@ -313,7 +314,7 @@ public class MyDodo extends Dodo
         turnLeft();
         walkToWorldEdge();
         turn180();
-        
+
         int moved = 0;
 
         while(!borderAhead()){
@@ -498,7 +499,34 @@ public class MyDodo extends Dodo
         while(!onEgg() && !borderAhead()){
             move();
         }
-    }    
+    }
+
+    /**
+     * Places all the Egg objects in the world in a list.
+     * 
+     * @return List of Egg objects in the world
+     */
+    public List<Egg> getListOfEggsInWorld() {
+        return getWorld().getObjects(Egg.class);
+    }
+
+    public List<Integer> createListOfNumbers() {
+        return new ArrayList<> (Arrays.asList( 2, 43, 7, -5, 12, 7 ));
+    }
+
+    /**
+     * Method for praciticing with lists.
+     */
+    public void practiceWithLists( ){
+        List<Integer> listOfNumbers = createListOfNumbers();
+
+        //the following is incorrect and is to be fixed in challenge 6.1c
+        System.out.println("First element: " + listOfNumbers.get(1) ); 
+    }
+
+    public void practiceWithListsOfSurpriseEggs( ){
+        List<SurpriseEgg>  listOfEgss = SurpriseEgg.generateListOfSurpriseEggs( 12, getWorld() );
+    }
 
     /**
      * Walks to edge of the world printing the coordinates at each step
@@ -517,7 +545,7 @@ public class MyDodo extends Dodo
     /**
      * walks to the egde of the world look at th end left
      */
-    public void goBackToStartOfRowAndFaceBack( ) {
+    public void goBackToStartOfRowAndFaceBack() {
         turn180();
         walkToWorldEdge();
         turn180();
