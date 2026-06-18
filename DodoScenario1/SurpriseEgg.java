@@ -14,7 +14,7 @@ public class SurpriseEgg extends Egg
     public SurpriseEgg () {
         super( Greenfoot.getRandomNumber( MAX_VALUE ) + 1 );
     }    
-
+    
     public static List<SurpriseEgg> generateListOfSurpriseEggs( int size, World world ) {
         int emptyCells = world.getHeight() * world.getWidth() - world.numberOfObjects();
         if ( size <= emptyCells ) {

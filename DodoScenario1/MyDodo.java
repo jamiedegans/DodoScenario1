@@ -314,7 +314,6 @@ public class MyDodo extends Dodo
         turnLeft();
         walkToWorldEdge();
         turn180();
-
         int moved = 0;
 
         while(!borderAhead()){
@@ -344,7 +343,6 @@ public class MyDodo extends Dodo
                 }
                 break;
             }
-
             turnRight();
             if(borderAhead()){
                 break;
@@ -493,11 +491,34 @@ public class MyDodo extends Dodo
 
     /**
      * the dodo walks to a egg
-     * then reurns the boolean
+     * then returns the boolean
      */
     public void gotoEgg() {
         while(!onEgg() && !borderAhead()){
             move();
+        }
+    }
+
+    /**
+     * dodo will lay 10 randoms surpiseEggs on random places
+     */
+    public List<SurpriseEgg> makeListOfSurpriseEggs(){
+        return SurpriseEgg.generateListOfSurpriseEggs(10, getWorld());
+    }
+
+    /**
+     * dodo wil print the coordinates of the egg selected
+     */
+    public void printCoordinatesOfEgg(Egg egg){
+        System.out.println(egg.getX() + " "+ egg.getY());  
+    }
+    
+    /**
+     * dodo will lay 10 randoms surpiseEggs on random places and print it coordinates
+     */
+    public void makeListOfSurpriseEggsAndPrintCoordinates(){
+        for (Egg egg: makeListOfSurpriseEggs()){
+            printCoordinatesOfEgg(egg);
         }
     }
 
@@ -560,7 +581,6 @@ public class MyDodo extends Dodo
                 layEgg();
             }
             move();
-
         }
         if(onNest() && canLayEgg()){
             layEgg();
