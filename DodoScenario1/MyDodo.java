@@ -539,7 +539,20 @@ public class MyDodo extends Dodo
         System.out.println(highestEgg.getValue());
     }
 
-    // public void _averageValueEggs(){   }
+     public void _averageValueEggs(){   
+        int MostValueEgg = -1;
+        Egg highestEgg = null;
+        for (Egg egg: makeListOfSurpriseEggs()){
+            printCoordinatesOfEgg(egg);
+            System.out.println(egg.getValue());
+            if(MostValueEgg < egg.getValue()){
+                highestEgg = egg;
+                MostValueEgg = egg.getValue();
+            }
+        }
+        printCoordinatesOfEgg(highestEgg);
+        System.out.println(highestEgg.getValue());
+        }
 
     /**
      * Places all the Egg objects in the world in a list.
