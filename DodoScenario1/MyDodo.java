@@ -133,7 +133,6 @@ public class MyDodo extends Dodo
         }  
         showError("Invalid coordinates");
         return false;
-
     }
 
     /**
@@ -512,7 +511,7 @@ public class MyDodo extends Dodo
     public void printCoordinatesOfEgg(Egg egg){
         System.out.println(egg.getX() + " "+ egg.getY());  
     }
-    
+
     /**
      * dodo will lay 10 randoms surpiseEggs on random places and print it coordinates
      */
@@ -521,6 +520,26 @@ public class MyDodo extends Dodo
             printCoordinatesOfEgg(egg);
         }
     }
+
+    /**
+     * dodo will lay 10 eggs then count value of all eggs and print out most valuable
+     */
+    public void selectTheWithTheMostValueEgg(){
+        int MostValueEgg = -1;
+        Egg highestEgg = null;
+        for (Egg egg: makeListOfSurpriseEggs()){
+            printCoordinatesOfEgg(egg);
+            System.out.println(egg.getValue());
+            if(MostValueEgg < egg.getValue()){
+                highestEgg = egg;
+                MostValueEgg = egg.getValue();
+            }
+        }
+        printCoordinatesOfEgg(highestEgg);
+        System.out.println(highestEgg.getValue());
+    }
+
+    // public void _averageValueEggs(){   }
 
     /**
      * Places all the Egg objects in the world in a list.
