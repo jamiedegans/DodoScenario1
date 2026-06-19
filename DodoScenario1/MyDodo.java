@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.*;
+import java.util.*;  
 
 /**
  *
@@ -538,21 +538,23 @@ public class MyDodo extends Dodo
         printCoordinatesOfEgg(highestEgg);
         System.out.println(highestEgg.getValue());
     }
-
-     public void _averageValueEggs(){   
-        int MostValueEgg = -1;
-        Egg highestEgg = null;
-        for (Egg egg: makeListOfSurpriseEggs()){
-            printCoordinatesOfEgg(egg);
-            System.out.println(egg.getValue());
-            if(MostValueEgg < egg.getValue()){
-                highestEgg = egg;
-                MostValueEgg = egg.getValue();
-            }
+    
+    /**
+     * dodo wil lay 10 eggs random valua and then calculate then average value eggs
+     */
+    public void averageValueEggs(){   
+        int valueEggs = 0;
+         double average = 00.00;
+         List<SurpriseEgg> eggs = makeListOfSurpriseEggs();
+       int size = eggs.size();
+       
+        for (Egg egg: eggs){
+            System.out.println(valueEggs = valueEggs + egg.getValue());
         }
-        printCoordinatesOfEgg(highestEgg);
-        System.out.println(highestEgg.getValue());
-        }
+        average = (double)valueEggs / size;
+        System.out.println("tha avarage is");
+        System.out.println(average);
+    }
 
     /**
      * Places all the Egg objects in the world in a list.
