@@ -20,6 +20,21 @@ public class MyDodo extends Dodo
     }
 
     /**
+     * dodo wil move 20 steps randomly
+     */
+    public void moveRandomly(){
+
+        for(int nrStepsTaken = 0; nrStepsTaken < Mauritius.MAXSTEPS;) { 
+            move();                         
+            nrStepsTaken++;
+            if(borderAhead() || fenceAhead()){
+                turnLeft();
+            }
+            System.out.println(nrStepsTaken);
+        }
+    }
+
+    /**
      * Move one cell forward in the current direction.
      * 
      * <P> Initial: Dodo is somewhere in the world
@@ -443,7 +458,7 @@ public class MyDodo extends Dodo
      */
     public void jump( int distance ) {
         int nrStepsTaken = 0;               // set counter to 0
-        while ( nrStepsTaken < distance ) { 
+        while (nrStepsTaken < distance ) { 
 
             move();                         
             nrStepsTaken++;
@@ -538,16 +553,16 @@ public class MyDodo extends Dodo
         printCoordinatesOfEgg(highestEgg);
         System.out.println(highestEgg.getValue());
     }
-    
+
     /**
      * dodo wil lay 10 eggs random valua and then calculate then average value eggs
      */
     public void averageValueEggs(){   
         int valueEggs = 0;
-         double average = 00.00;
-         List<SurpriseEgg> eggs = makeListOfSurpriseEggs();
-       int size = eggs.size();
-       
+        double average = 00.00;
+        List<SurpriseEgg> eggs = makeListOfSurpriseEggs();
+        int size = eggs.size();
+
         for (Egg egg: eggs){
             System.out.println(valueEggs = valueEggs + egg.getValue());
         }

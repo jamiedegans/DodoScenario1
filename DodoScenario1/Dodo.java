@@ -42,7 +42,6 @@ public abstract class Dodo extends Actor
         } 
     }
     
-    
     public boolean fenceAhead() {
         return getActorAhead( Fence.class ) != null;
     }
