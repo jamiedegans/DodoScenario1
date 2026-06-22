@@ -67,6 +67,8 @@ public class Mauritius extends World
             Nest.class, Egg.class, Fence.class);        
         populate();
         prepare();
+        
+        addObject(theScoreboard, 2, getHeight()-1);
     }
 
     public static void traceOn() {

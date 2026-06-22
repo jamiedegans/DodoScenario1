@@ -18,7 +18,12 @@ public class MyDodo extends Dodo
     public void act() {
 
     }
-
+    
+    public void _getScore(int score1, int score2){
+       ((Mauritius)getWorld()).updateScore();
+    
+    }
+    
     /**
      * dodo wil move 20 steps randomly
      */
@@ -26,11 +31,11 @@ public class MyDodo extends Dodo
 
         for(int nrStepsTaken = 0; nrStepsTaken < Mauritius.MAXSTEPS;) { 
             move();                         
-            nrStepsTaken++;
+            nrStepsTaken-;
+            faceDirection(randomDirection());
             if(borderAhead() || fenceAhead()){
                 turnLeft();
             }
-            System.out.println(nrStepsTaken);
         }
     }
 
