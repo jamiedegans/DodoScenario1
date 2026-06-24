@@ -18,22 +18,26 @@ public class MyDodo extends Dodo
     public void act() {
 
     }
-    
-    public void _getScore(int score1, int score2){
-       ((Mauritius)getWorld()).updateScore();
-    
-    }
-    
+
     /**
-     * dodo wil move 20 steps randomly
+     * updates the score broad 
+     */
+    public void getScore(int score1, int score2){
+        ((Mauritius)getWorld()).updateScore(score1, score2);
+
+    }
+
+    /**
+     * dod will move randomlyand update the scoreboard
      */
     public void moveRandomly(){
-
-        for(int nrStepsTaken = 0; nrStepsTaken < Mauritius.MAXSTEPS;) { 
+        int scoreSteps = Mauritius.MAXSTEPS;
+        for(int nrStepsTaken = 0; nrStepsTaken < Mauritius.MAXSTEPS; nrStepsTaken = nrStepsTaken + 1) { 
             move();                         
-            nrStepsTaken-;
+            scoreSteps = scoreSteps - 1;
+            getScore(scoreSteps, 0);
             faceDirection(randomDirection());
-            if(borderAhead() || fenceAhead()){
+            while(borderAhead() || fenceAhead()){
                 turnLeft();
             }
         }
