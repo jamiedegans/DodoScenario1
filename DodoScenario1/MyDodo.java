@@ -18,7 +18,39 @@ public class MyDodo extends Dodo
     public void act() {
 
     }
-
+    
+    public void _robertMode(){
+        int eggXY;
+        int mimiXY;
+        Egg bestEgg;
+        int closest;
+        int distance:
+        int eggsTotalSteps = Integer.MAX_VALUE;
+            for (Egg egg: getListOfEggsInWorld()){
+            printCoordinatesOfEgg(egg);
+            int  eggX = egg.getX();
+            int  eggY = egg.getY();
+            int  dodoX = getX();
+            int  dodoY = getY();
+            eggY  = eggY - eggY;
+            eggX  = eggX - eggX;
+            eggXY = eggX * eggX + eggY * eggY;
+            
+            int mimiX = getX();
+            int mimiY = getY();
+            
+            mimiXY = mimiX * mimiX  + mimiY * mimiY;
+            distance =  mimiXY - eggXY
+            if(eggXY ){
+                goToLocation(eggX, eggY);
+            }
+             
+        }
+    }
+            
+            
+      
+    
     /**
      * updates the score broad 
      */
