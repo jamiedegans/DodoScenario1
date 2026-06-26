@@ -18,6 +18,59 @@ public class MyDodo extends Dodo
     public void act() {
 
     }
+    
+     /**
+     * dodo will go to the egg with the best value and keeps going he has no steps
+     */
+    public void dodoRace(){
+        int stepsLeft = Mauritius.MAXSTEPS;
+        int score = 0;
+
+        while(stepsLeft > 0 && getListOfEggsInWorld().size() != 0){
+            Egg bestEgg = null;
+            double bestRatio = -1;
+            int neededSteps = 0;
+
+            for (Egg egg : getListOfEggsInWorld()){
+                printCoordinatesOfEgg(egg);
+
+                int eggX = egg.getX() - getX();
+                int eggY = egg.getY() - getY();
+                if(eggX < 0){
+                    eggX = eggX * -1;
+                }
+                if(eggY < 0){
+                    eggY = eggY * -1;
+                }
+
+                int steps = eggX + eggY;
+                if(steps == 0){
+                    steps = 1;
+                }
+                if(steps == 0){
+                    steps = 1;
+                }
+                double ratio = (double) egg.getValue() / steps;
+
+                
+                if (ratio > bestRatio && steps <= stepsLeft){
+                    bestRatio = ratio;
+                    bestEgg = egg;
+                    neededSteps = steps;
+                }
+            }
+
+            if (bestEgg == null){
+                break;
+            }
+
+            goToLocation(bestEgg.getX(), bestEgg.getY());
+            score = score + pickUpEgg().getValue();
+            stepsLeft = stepsLeft - neededSteps;
+            getScore(stepsLeft, score);
+        }
+    }
+    
     /**
      * dodo will go to the nearest egg and pick it up
      */
